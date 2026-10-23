@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tult · Aide et contact</title>
+<meta name="description" content="Questions fréquentes sur Tult et adresse pour nous écrire.">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Nunito:wght@800;900&display=swap">
+<style>
+/* Layout : une colonne de lecture, reprenant le thème de l'app (fond sable, accent orange cible). */
+:root {
+  --bg: #F5F4F0; --surface: #FFFFFF; --surface-alt: #ECEAE4; --border: #E2DFD7;
+  --text: #16171B; --text-2: #5A5E67; --accent: #B83C17; --accent-soft: #FDE5DD;
+  --ok: #17955E; --ok-soft: #DDF3E8;
+  --display: 'Nunito', 'Helvetica Neue', Arial, sans-serif;
+  --body: 'Manrope', -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F1013; --surface: #18191D; --surface-alt: #232529; --border: #2A2C31;
+  --text: #F3F3F4; --text-2: #A2A5AD; --accent: #FF6B47; --accent-soft: rgba(255,107,71,.16);
+  --ok: #3DCB8B; --ok-soft: rgba(61,203,139,.16); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0F1013; --surface: #18191D; --surface-alt: #232529; --border: #2A2C31;
+  --text: #F3F3F4; --text-2: #A2A5AD; --accent: #FF6B47; --accent-soft: rgba(255,107,71,.16);
+  --ok: #3DCB8B; --ok-soft: rgba(61,203,139,.16); color-scheme: dark; }
+
+body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.65; font-weight: 500; }
+.wrap { max-width: 42rem; margin: 0 auto; padding-inline: 20px; padding-block: 48px 72px; display: flex; flex-direction: column; gap: 40px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+.app { display: flex; align-items: center; gap: 12px; }
+.mark { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; }
+.app span { font-family: var(--display); font-weight: 900; font-size: 1.1rem; letter-spacing: .01em; }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.15; margin: 0; text-wrap: balance; }
+.meta { color: var(--text-2); font-size: .9rem; margin: 0; }
+.summary { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.summary h2 { margin: 0; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); font-family: var(--body); font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { background: var(--ok-soft); color: var(--ok); font-weight: 700; font-size: .88rem; padding: 6px 12px; border-radius: 999px; }
+.summary p { margin: 0; }
+section { display: flex; flex-direction: column; gap: 12px; }
+section h2 { font-family: var(--display); font-weight: 800; font-size: 1.35rem; line-height: 1.3; margin: 0; text-wrap: balance; }
+section p, section ul { margin: 0; }
+ul.list { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 6px; }
+ul.list li::marker { color: var(--accent); }
+strong { font-weight: 700; }
+.table { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { text-align: left; padding: 12px 14px; vertical-align: top; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: 0; }
+th { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); background: var(--surface-alt); }
+.mail { font-weight: 700; color: var(--accent); user-select: all; overflow-wrap: anywhere; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--border); padding-top: 20px; }
+</style>
+<style>
+.hero { display: flex; flex-direction: column; gap: 18px; }
+.hero img { width: 96px; height: 96px; border-radius: 22px; }
+.lead { font-size: 1.12rem; color: var(--text-2); margin: 0; }
+.links { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.links a { display: flex; justify-content: space-between; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; color: var(--text); text-decoration: none; font-weight: 700; }
+.links a::after { content: "›"; color: var(--text-2); font-size: 1.3rem; }
+.soon { display: inline-block; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: .9rem; padding: 6px 12px; border-radius: 999px; align-self: flex-start; }
+details { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px 18px; }
+summary { font-weight: 700; cursor: pointer; }
+details p { margin: 10px 0 0; color: var(--text-2); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="app"><img class="mark" src="/icon.png" alt="" width="40" height="40" style="border-radius:10px"><a href="/" style="color:inherit;text-decoration:none"><span>Tult</span></a></div>
+    <h1>Aide et contact</h1>
+  </header>
+  <section>
+    <h2>Nous écrire</h2>
+    <p>Une question, un bug, une idée de jeu ? Écrivez-nous à <a class="mail" href="mailto:jointultapp@gmail.com">jointultapp@gmail.com</a>. Dans l’application : Réglages, puis « Nous écrire ».</p>
+  </section>
+  <section>
+    <h2>Questions fréquentes</h2>
+    <details><summary>Mes parties sont-elles envoyées quelque part ?</summary><p>Non. Tult n’a ni compte ni serveur : vos joueurs, vos parties et vos photos restent sur votre téléphone.</p></details>
+    <details><summary>Comment retrouver mes parties sur un nouveau téléphone ?</summary><p>Sur l’ancien téléphone : Réglages, « Sauvegarder mes données », puis enregistrez le fichier (Google Drive, e-mail…). Sur le nouveau : Réglages, « Restaurer une sauvegarde », et choisissez ce fichier.</p></details>
+    <details><summary>Les annonces vocales ne parlent pas</summary><p>Vérifiez qu’elles sont activées (Réglages, « Annonces vocales ») et que le volume du téléphone est monté. Le bouton « Tester la voix » permet de vérifier.</p></details>
+    <details><summary>Comment soutenir Tult ?</summary><p>Tult est gratuite et le reste. Si elle anime vos soirées, un pourboire est possible dans Réglages, « Soutenir Tult ». Il ne débloque rien : l’application est la même pour tout le monde.</p></details>
+  </section>
+  <footer>Tult · Maxime Lemaitre, France · <a href="/confidentialite/">Confidentialité</a> · <a href="/aide/">Aide et contact</a></footer>
+</div>
+</body>
+</html>
