@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tult · Privacy</title>
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Nunito:wght@800;900&display=swap">
+<style>
+/* One reading column, in the app's theme (sand background, target orange accent). */
+:root {
+  --bg: #F5F4F0; --surface: #FFFFFF; --surface-alt: #ECEAE4; --border: #E2DFD7;
+  --text: #16171B; --text-2: #5A5E67; --accent: #B83C17; --accent-soft: #FDE5DD;
+  --ok: #17955E; --ok-soft: #DDF3E8;
+  --display: 'Nunito', 'Helvetica Neue', Arial, sans-serif;
+  --body: 'Manrope', -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F1013; --surface: #18191D; --surface-alt: #232529; --border: #2A2C31;
+  --text: #F3F3F4; --text-2: #A2A5AD; --accent: #FF6B47; --accent-soft: rgba(255,107,71,.16);
+  --ok: #3DCB8B; --ok-soft: rgba(61,203,139,.16); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0F1013; --surface: #18191D; --surface-alt: #232529; --border: #2A2C31;
+  --text: #F3F3F4; --text-2: #A2A5AD; --accent: #FF6B47; --accent-soft: rgba(255,107,71,.16);
+  --ok: #3DCB8B; --ok-soft: rgba(61,203,139,.16); color-scheme: dark; }
+
+body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.65; font-weight: 500; }
+.wrap { max-width: 42rem; margin: 0 auto; padding-inline: 20px; padding-block: 48px 72px; display: flex; flex-direction: column; gap: 40px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+.app { display: flex; align-items: center; gap: 12px; }
+.mark { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; }
+.app span { font-family: var(--display); font-weight: 900; font-size: 1.1rem; letter-spacing: .01em; }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(2rem, 6vw, 2.6rem); line-height: 1.15; margin: 0; text-wrap: balance; }
+.meta { color: var(--text-2); font-size: .9rem; margin: 0; }
+.summary { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.summary h2 { margin: 0; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); font-family: var(--body); font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { background: var(--ok-soft); color: var(--ok); font-weight: 700; font-size: .88rem; padding: 6px 12px; border-radius: 999px; }
+.summary p { margin: 0; }
+section { display: flex; flex-direction: column; gap: 12px; }
+section h2 { font-family: var(--display); font-weight: 800; font-size: 1.35rem; line-height: 1.3; margin: 0; text-wrap: balance; }
+section p, section ul { margin: 0; }
+ul.list { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 6px; }
+ul.list li::marker { color: var(--accent); }
+strong { font-weight: 700; }
+.table { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { text-align: left; padding: 12px 14px; vertical-align: top; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: 0; }
+th { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); background: var(--surface-alt); }
+.mail { font-weight: 700; color: var(--accent); user-select: all; overflow-wrap: anywhere; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--border); padding-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="app">
+      <img class="mark" src="/icon.png" alt="" width="40" height="40">
+      <a href="/" style="color:inherit;text-decoration:none"><span>Tult</span></a>
+    </div>
+    <h1>Privacy policy</h1>
+    <p class="meta">In force from 1 November 2026 · iOS and Android apps</p>
+    <p class="meta"><a href="/confidentialite/" hreflang="fr" lang="fr">Version française</a></p>
+  </header>
+
+  <div class="summary">
+    <h2>In short</h2>
+    <ul class="chips">
+      <li>No account</li>
+      <li>No ads</li>
+      <li>No tracking</li>
+      <li>No server</li>
+    </ul>
+    <p>Tult works entirely offline. Everything you save (players, games, tournaments, statistics) stays on your phone. The publisher of the app receives, collects and sees none of this data.</p>
+  </div>
+
+  <section>
+    <h2>Who publishes the app</h2>
+    <p>Tult is published by Maxime Lemaitre, in France. For any question about this policy: <span class="mail">jointultapp@gmail.com</span>.</p>
+  </section>
+
+  <section>
+    <h2>What is saved on your phone</h2>
+    <p>To work, the app keeps the following information in its private storage, on your device only:</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Data</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Player profiles: name or nickname, colour, emoji, player number, optional photo</td><td>Show the players during games and follow their progress</td></tr>
+          <tr><td>Games, scores, throws, solo challenges and tournaments (with their place and team names, if you enter them)</td><td>Count the points, resume a game, keep the history</td></tr>
+          <tr><td>End-of-game souvenir photo, if you take one</td><td>Keep it with the game, in the history</td></tr>
+          <tr><td>Calculated statistics (averages, success rates, rankings)</td><td>Show the summaries and progress charts</td></tr>
+          <tr><td>Settings (language, voice announcements, sounds, vibrations, tone and scale of the summary)</td><td>Remember your preferences</td></tr>
+          <tr><td>Date of your last tip, if you left one</td><td>Thank you for your support</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>This data is sent to no server, neither to the publisher nor to any third party. The app includes no usage analytics, advertising, tracking or crash reporting tool.</p>
+  </section>
+
+  <section>
+    <h2>Permissions requested</h2>
+    <ul class="list">
+      <li><strong>Camera</strong>: to scan a player's QR code and, if you wish, take an avatar photo or a souvenir photo at the end of a game.</li>
+      <li><strong>Photos</strong>: to pick an avatar image or a souvenir photo from your gallery.</li>
+    </ul>
+    <p>These permissions are only requested when you use the feature concerned. You can refuse or withdraw them at any time in your phone's settings; the rest of the app keeps working. The images you pick are copied into the app; they only leave it in a backup you create yourself.</p>
+  </section>
+
+  <section>
+    <h2>What you choose to share</h2>
+    <ul class="list">
+      <li><strong>Sharing a player</strong> by QR code or by link: it contains the player's name, colour, emoji and number, but never their photo. It goes straight from one phone to another, with no server.</li>
+      <li><strong>Results card</strong>: when you share an image at the end of a game or tournament, it shows the names, scores and ratings, but not the players' photos. It goes through your phone's share menu. The app or service you choose (messaging, social network…) then applies its own privacy policy.</li>
+      <li><strong>Souvenir photo</strong>: the photo taken at the end of a game stays on your phone. It only leaves it if you share it (with a banner showing the game, the winner and the date), through your phone's share menu, or in a backup.</li>
+      <li><strong>Backing up your data</strong>: from the settings, the app can create a file containing your players and your games (photos included), your tournaments, your challenges and your settings. You choose where to save or send it (Files, iCloud Drive, Google Drive, email…); that service then applies its own privacy policy. The file is not encrypted: keep it somewhere safe. It is only used to restore your data in Tult, on this phone or another one.</li>
+      <li><strong>Review request</strong>: after a few games, the app may show the App Store or Google Play rating window. If you leave a rating or a review, it is sent to Apple or Google and published under their terms; the app receives nothing from it.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tips</h2>
+    <p>From the settings, you can leave a tip. The payment is handled entirely by Apple (App Store) or Google (Google Play), under their terms and privacy policy: the app sees neither your name, nor your account, nor your payment details. It only remembers, on your phone, the date of your last tip, to thank you. A tip unlocks no feature and is not a subscription.</p>
+  </section>
+
+  <section>
+    <h2>Voice announcements</h2>
+    <p>If you turn on voice announcements, the scores are read by the text-to-speech engine built into your phone (iOS or Android). The app does not use the microphone and records no sound.</p>
+  </section>
+
+  <section>
+    <h2>The other players</h2>
+    <p>If you add friends or family as players, especially with their photo, make sure they agree. This information stays on your phone, like yours.</p>
+  </section>
+
+  <section>
+    <h2>Retention and deletion</h2>
+    <p>The data stays on your phone until you delete it. You can delete a game or a tournament from its screen, or by swiping it to the left in the lists. A removed player no longer appears in the lists but stays linked to their past games. To erase everything at once, use “Erase all data” in the settings, or uninstall the app: all its data is then deleted from the phone.</p>
+    <p>Your phone's backups (iCloud or Google) may include the app's data, depending on your system settings. They then fall under Apple's or Google's policy.</p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>The app can be used by the whole family. It collects no personal data, whatever the user's age.</p>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p>The General Data Protection Regulation (GDPR) gives you, among others, a right of access, rectification and erasure. As the publisher holds no data about you, these rights are exercised directly in the app, where you can view, change, export and delete your information. For any question, write to <span class="mail">jointultapp@gmail.com</span>. You can also lodge a complaint with the <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>, the French data protection authority.</p>
+  </section>
+
+  <section>
+    <h2>Changes</h2>
+    <p>This policy will be updated if the app changes, for example with accounts or online sync. The current version is always published on this page, with the date it came into force.</p>
+  </section>
+
+  <footer>Tult · Privacy policy · Last updated: 1 November 2026</footer>
+</div>
+</body>
+</html>
