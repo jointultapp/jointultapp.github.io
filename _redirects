@@ -1,0 +1,4 @@
+# Netlify : les pages du tournoi en direct, l'app Tult exportée pour le web (dépôt jointultapp/tult,
+# scripts/web/publish-site.sh). Le reste du site est servi tel quel.
+/live/*  /app.html  200
+/t/*     /app.html  200

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#F5F4F0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0F1013" media="(prefers-color-scheme: dark)" />
+    <title>Tult</title>
+    <style id="expo-reset">
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        overflow: hidden;
+        margin: 0;
+        background: #f5f4f0;
+        color: #16171b;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #0f1013;
+          color: #f3f3f4;
+        }
+      }
+      /* Le grand écran est toujours sombre : pas d'éclair blanc sur la télé au chargement. */
+      html.tv body {
+        background: #0f1013;
+        color: #f3f3f4;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+      /* Affiché le temps que l'app se charge, puis remplacé par elle. */
+      .boot {
+        margin: auto;
+        font: 900 clamp(40px, 8vw, 120px) / 1 system-ui, -apple-system, sans-serif;
+        letter-spacing: -0.02em;
+        opacity: 0.9;
+      }
+      .boot span {
+        color: #d2461c;
+      }
+    </style>
+    <script>
+      if (location.pathname.indexOf('/live/') === 0) document.documentElement.className = 'tv';
+    </script>
+  <link rel="icon" href="/favicon.ico"/><link rel="preload" href="/_expo/static/css/native-tabs.module-78b0f59737571f455720970791a36bdd.css" as="style">
+<link rel="stylesheet" href="/_expo/static/css/native-tabs.module-78b0f59737571f455720970791a36bdd.css"></head>
+
+  <body>
+    <noscript>Tult a besoin de JavaScript pour afficher le tournoi.</noscript>
+    <div id="root"><div class="boot">Tult<span>.</span></div></div>
+  <script src="/_expo/static/js/web/entry-6ae37720dc179a9b35feb6f703b8ffee.js" defer></script>
+</body>
+</html>
