@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tult · Les scores de vos parties entre amis</title>
-<meta name="description" content="Tult compte les points de vos parties entre amis : fléchettes, pétanque, Mölkky, cartes, sports et jeux vidéo. Gratuit, sans publicité, sans compte.">
+<meta name="description" content="Tult compte les points de vos parties entre amis : fléchettes, pétanque, Mölkky, cartes, sports et jeux vidéo. Gratuit, sans publicité, sans inscription.">
 <link rel="icon" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,6 +67,15 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
 details { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px 18px; }
 summary { font-weight: 700; cursor: pointer; }
 details p { margin: 10px 0 0; color: var(--text-2); }
+/* The stores, once Tult is on them (links.js): an orange button each, else the « Bientôt » badge. */
+:root { --on-accent: #FFFFFF; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --on-accent: #0F1013; } }
+:root[data-theme="dark"] { --on-accent: #0F1013; }
+/* A hidden block stays hidden, whatever its display. */
+[hidden] { display: none !important; }
+.get { display: flex; flex-wrap: wrap; gap: 10px; }
+.store { display: inline-flex; align-items: center; background: var(--accent); color: var(--on-accent); font-weight: 700; padding: 14px 20px; border-radius: 14px; text-decoration: none; }
+.store:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 </style>
 </head>
 <body>
@@ -74,18 +83,55 @@ details p { margin: 10px 0 0; color: var(--text-2); }
   <header class="hero">
     <img src="/icon.png" alt="Icône de Tult : « Tult. » écrit en points sur un domino blanc, fond terracotta" width="96" height="96">
     <h1>Les scores de vos parties entre amis</h1>
-    <p class="lead">Tult compte les points pendant que vous jouez : fléchettes (501, 301, Cricket, Horloge, Killer), pétanque, Mölkky, Yams, Belote, Tarot, tennis de table, jeux vidéo et tout ce que vous inventez. Annonces à voix haute, tournois, statistiques et défis solo.</p>
-    <span class="soon">Bientôt sur Google Play</span>
+    <p class="lead">Tult compte les points pendant que vous jouez : fléchettes (501, 301, Cricket, Horloge, Killer), pétanque, Mölkky, Yams, Belote, Tarot, Scrabble, tennis de table, jeux vidéo (EA FC, Mario Kart, Switch Sports…) et tout ce que vous inventez. Annonces à voix haute, tournois et soirées multi-jeux, statistiques et défis solo.</p>
+    <div class="get" id="get"><span class="soon">Bientôt sur Google Play</span></div>
   </header>
   <section>
-    <h2>Gratuit, sans publicité, sans compte</h2>
-    <p>Vos joueurs et vos parties restent sur votre téléphone : rien n’est envoyé sur internet. Une sauvegarde vous permet de tout retrouver sur un nouveau téléphone.</p>
+    <h2>Gratuit, sans publicité, sans inscription</h2>
+    <p>Vos joueurs, vos parties et vos statistiques sont gardés sur votre téléphone. Une copie de vos parties terminées est conservée en ligne, pour que vos amis les retrouvent dans leurs statistiques et que vous retrouviez les vôtres sur un autre téléphone. Vos photos restent sur votre téléphone.</p>
+  </section>
+  <section id="follow" hidden>
+    <h2>Suivre Tult</h2>
+    <ul class="links" id="socials"></ul>
   </section>
   <ul class="links">
     <li><a href="/aide/">Aide et contact</a></li>
     <li><a href="/confidentialite/">Politique de confidentialité</a></li>
   </ul>
-  <footer>Tult · Maxime Lemaitre, France · <a href="/confidentialite/">Confidentialité</a> · <a href="/aide/">Aide et contact</a></footer>
+  <footer>Tult · Maxime Lemaitre, France · <a href="/confidentialite/">Confidentialité</a> · <a href="/suppression/">Supprimer son compte</a> · <a href="/aide/">Aide et contact</a></footer>
 </div>
+<script src="/links.js"></script>
+<script>
+// The store buttons and the social accounts, from links.js; without them the page stays as written.
+(function () {
+  var links = window.TULT_LINKS || {};
+  var stores = [['android', 'Télécharger sur Google Play'], ['ios', 'Télécharger sur l’App Store']].filter(function (s) { return links[s[0]]; });
+  var get = document.getElementById('get');
+  if (stores.length) {
+    get.textContent = '';
+    stores.forEach(function (s) {
+      var a = document.createElement('a');
+      a.className = 'store';
+      a.href = links[s[0]];
+      a.textContent = s[1];
+      get.appendChild(a);
+    });
+  }
+  var socials = (links.socials || []).filter(function (s) { return s && s.name && s.url; });
+  if (socials.length) {
+    var list = document.getElementById('socials');
+    socials.forEach(function (s) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = s.url;
+      a.rel = 'noopener';
+      a.textContent = s.name;
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    document.getElementById('follow').hidden = false;
+  }
+})();
+</script>
 </body>
 </html>
