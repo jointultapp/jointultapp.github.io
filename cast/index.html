@@ -25,6 +25,9 @@
 html, body { height: 100%; background: var(--bg); color: var(--text); font-family: var(--body); overflow: hidden; }
 /* Everything in vh/vw: a TV is 1280×720 or 1920×1080, never touched, read from afar. */
 #app { height: 100vh; display: flex; flex-direction: column; padding: 4vh 4vw; gap: 3vh; }
+/* Netlify's badge (free plan) sits at the bottom right, 64 px high in pixels, not vh: the board
+   ends above it while it is there. */
+body.badge #app { padding-bottom: calc(64px + 1.5vh); }
 .head { display: flex; align-items: baseline; justify-content: space-between; }
 .title { font-family: var(--display); font-weight: 900; font-size: 5.5vh; letter-spacing: -0.02em; margin-right: 1.2vw; }
 .sub { font-weight: 700; font-size: 3vh; color: var(--text-2); }
@@ -150,6 +153,11 @@ function render(b) {
   }
   shown = b;
 }
+
+// Netlify adds its badge as an iframe once its own script has loaded, before or after this one.
+function clearBadge() { document.body.classList.toggle('badge', !!document.getElementById('nl-badge-frame')); }
+clearBadge();
+new MutationObserver(clearBadge).observe(document.body, { childList: true });
 
 var demo = /[?&]demo/.test(location.search);
 if (!demo && window.cast && cast.framework) {
