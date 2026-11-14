@@ -27,7 +27,7 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 #app { height: 100vh; display: flex; flex-direction: column; padding: 4vh 4vw; gap: 3vh; }
 /* Netlify's badge (free plan) sits at the bottom right, 64 px high in pixels, not vh: the board
    ends above it while it is there. */
-body.badge #app { padding-bottom: calc(64px + 1.5vh); }
+body.netlify-badge #app { padding-bottom: calc(64px + 1.5vh); }
 .head { display: flex; align-items: center; justify-content: space-between; gap: 2vw; }
 .title { font-family: var(--display); font-weight: 900; font-size: 5.5vh; letter-spacing: -0.02em; margin-right: 1.2vw; }
 .sub { font-weight: 700; font-size: 3vh; color: var(--text-2); }
@@ -75,9 +75,9 @@ body.badge #app { padding-bottom: calc(64px + 1.5vh); }
 .heart.broken path { fill: #CFCAC0; }
 .side.current .heart.full path { fill: var(--ink, #fff); }
 .side.current .heart.broken path { fill: var(--ink, #fff); fill-opacity: 0.32; }
-.badge { display: inline-flex; align-items: center; gap: 0.5vw; font-weight: 700; font-size: calc(var(--u) * 2.4vh); color: var(--accent); }
-.badge svg { width: calc(var(--u) * 3vh); height: calc(var(--u) * 3vh); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.side.current .badge { color: var(--ink, #fff); }
+.killer-badge { display: inline-flex; align-items: center; gap: 0.5vw; font-weight: 700; font-size: calc(var(--u) * 2.4vh); color: var(--accent); }
+.killer-badge svg { width: calc(var(--u) * 3vh); height: calc(var(--u) * 3vh); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.side.current .killer-badge { color: var(--ink, #fff); }
 /* Cricket: the marks on each number, a stroke, a cross, a closed circle. */
 .marks { display: flex; gap: 0.4vw; }
 .cell { flex: 1; display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 0.2vh); border-radius: 1vh; background: var(--surface-alt); padding: calc(var(--u) * 0.5vh) 0; min-width: 0; }
@@ -219,7 +219,7 @@ function gameRowHtml(s, b) {
   if (s.lives) {
     var hearts = '';
     for (var i = 0; i < s.lives.total; i++) hearts += heartHtml(i < s.lives.left);
-    var badge = s.killer && !s.out ? '<span class="badge">' + SKULL + esc((b.labels && b.labels.killer) || 'Killer') + '</span>' : '';
+    var badge = s.killer && !s.out ? '<span class="killer-badge">' + SKULL + esc((b.labels && b.labels.killer) || 'Killer') + '</span>' : '';
     return '<div class="progress"><div class="hearts">' + hearts + '</div>' + badge + '</div>';
   }
   if (s.marks && b.targets) {
@@ -331,8 +331,8 @@ function render(b) {
 // Netlify adds its badge as an iframe once its own script has loaded, before or after this one.
 function clearBadge() {
   var badge = !!document.getElementById('nl-badge-frame');
-  if (document.body.classList.contains('badge') === badge) return;
-  document.body.classList.toggle('badge', badge);
+  if (document.body.classList.contains('netlify-badge') === badge) return;
+  document.body.classList.toggle('netlify-badge', badge);
   // Less height for the board: the cards are fitted again.
   fit();
 }
