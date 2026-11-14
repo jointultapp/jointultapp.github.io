@@ -95,6 +95,11 @@ body.netlify-badge #app { padding-bottom: calc(64px + 1.5vh); }
 .cell.dead { opacity: 0.35; }
 /* The clock: the way round. */
 .progress { display: flex; align-items: center; gap: 1vw; }
+.progress .pips { display: flex; gap: calc(var(--u) * 0.5vh); }
+.progress .pips i { width: calc(var(--u) * 1.3vh); height: calc(var(--u) * 1.3vh); border-radius: 50%; background: var(--surface-alt, rgba(0,0,0,0.12)); }
+.progress .pips i.on { background: var(--text, #16171B); }
+.side.current .progress .pips i { background: rgba(255,255,255,0.3); }
+.side.current .progress .pips i.on { background: var(--ink, #fff); }
 .bar { flex: 1; height: calc(var(--u) * 1.6vh); border-radius: 99px; background: var(--surface-alt); overflow: hidden; }
 .side.current .bar { background: var(--chip); }
 .bar i { display: block; height: 100%; border-radius: 99px; background: var(--accent); }
@@ -238,7 +243,10 @@ function gameRowHtml(s, b) {
   }
   if (s.progress) {
     var pct = s.progress.total ? Math.round((s.progress.done / s.progress.total) * 100) : 0;
-    return '<div class="progress"><div class="bar"><i style="width:' + pct + '%"></i></div><span class="k">' + s.progress.done + ' / ' + s.progress.total + '</span></div>';
+    // 3 points a number: the points already on the number aimed at, as three pips.
+    var pips = typeof s.progress.points === 'number'
+      ? '<span class="pips">' + [0, 1, 2].map(function (k) { return '<i' + (k < s.progress.points ? ' class="on"' : '') + '></i>'; }).join('') + '</span>' : '';
+    return '<div class="progress"><div class="bar"><i style="width:' + pct + '%"></i></div><span class="k">' + s.progress.done + ' / ' + s.progress.total + '</span>' + pips + '</div>';
   }
   return '';
 }
