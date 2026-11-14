@@ -28,24 +28,75 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
 /* Netlify's badge (free plan) sits at the bottom right, 64 px high in pixels, not vh: the board
    ends above it while it is there. */
 body.badge #app { padding-bottom: calc(64px + 1.5vh); }
-.head { display: flex; align-items: baseline; justify-content: space-between; }
+.head { display: flex; align-items: center; justify-content: space-between; gap: 2vw; }
 .title { font-family: var(--display); font-weight: 900; font-size: 5.5vh; letter-spacing: -0.02em; margin-right: 1.2vw; }
 .sub { font-weight: 700; font-size: 3vh; color: var(--text-2); }
 .brand { font-family: var(--display); font-weight: 900; font-size: 4vh; color: var(--text-2); }
 .brand b { color: var(--accent); }
 
 .sides { flex: 1; display: grid; gap: 2.4vh 1.6vw; min-height: 0; }
-.side { background: var(--surface); border-radius: 3vh; box-shadow: var(--raised); padding: 3vh 2vw; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; border: 0.5vh solid transparent; }
+/* One unit scales everything in a card, the score included: fit() sets it to the biggest that fits. */
+.sides { --u: 1; }
+.side { background: var(--surface); border-radius: 3vh; box-shadow: var(--raised); padding: calc(var(--u) * 2.8vh) 1.6vw; display: flex; flex-direction: column; justify-content: space-between; gap: calc(var(--u) * 1vh); min-width: 0; min-height: 0; overflow: hidden; border: 0.5vh solid transparent; }
 .side.current { color: var(--ink, #fff); }
-.side .top { display: flex; align-items: center; gap: 1.2vw; min-width: 0; }
-.dot { width: 4.6vh; height: 4.6vh; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 900; font-size: 2.2vh; color: #fff; }
+/* Out of a Killer game: greyed, as on the phone. */
+.side.out { opacity: 0.42; }
+.side .top { display: flex; align-items: center; gap: 1vw; min-width: 0; }
+.dot { width: calc(var(--u) * 4.8vh); height: calc(var(--u) * 4.8vh); border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 900; font-size: calc(var(--u) * 2.3vh); color: #fff; }
 .side.current .dot { box-shadow: 0 0 0 0.4vh var(--ink, #fff); }
-.name { font-weight: 700; font-size: 3.6vh; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
-.tag { font-weight: 700; font-size: 2.2vh; border: 0.25vh solid currentColor; border-radius: 99px; padding: 0.3vh 1vw; white-space: nowrap; }
+.name { font-weight: 700; font-size: calc(var(--u) * 4vh); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+.tag { font-weight: 700; font-size: calc(var(--u) * 2.5vh); border: 0.25vh solid currentColor; border-radius: 99px; padding: 0.2vh 0.9vw; white-space: nowrap; }
+.tag.out { color: var(--danger); }
 .figure { font-family: var(--display); font-weight: 900; line-height: 0.95; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.meta { display: flex; justify-content: space-between; gap: 1vw; font-weight: 700; font-size: 2.6vh; color: var(--text-2); }
+.figure.killer { color: var(--accent); }
+.side.current .figure.killer { color: inherit; }
+.meta { display: flex; justify-content: space-between; gap: 1vw; font-weight: 700; font-size: calc(var(--u) * 2.6vh); color: var(--text-2); }
 .side.current .meta { color: var(--ink, #fff); opacity: 0.85; }
-.place { font-family: var(--display); font-weight: 900; font-size: 3vh; color: var(--gold); }
+.place { font-family: var(--display); font-weight: 900; font-size: calc(var(--u) * 3vh); color: var(--gold); }
+/* The figures of the whole game, and the last visits (newest first). */
+.extra { display: flex; flex-direction: column; gap: calc(var(--u) * 1.2vh); min-width: 0; }
+.stats { display: flex; gap: 2.4vw; min-width: 0; }
+.stat { display: flex; flex-direction: column; min-width: 0; }
+.k { font-weight: 700; font-size: calc(var(--u) * 2.4vh); color: var(--text-2); white-space: nowrap; }
+.stat .v { font-family: var(--display); font-weight: 900; font-size: calc(var(--u) * 5.2vh); line-height: 1.1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.side.current .k { color: var(--ink, #fff); opacity: 0.85; }
+.recent { display: flex; flex-direction: column; gap: calc(var(--u) * 0.6vh); min-width: 0; }
+.chips { display: flex; gap: 0.5vw; min-width: 0; overflow: hidden; }
+.chip { font-family: var(--display); font-weight: 900; font-size: calc(var(--u) * 3.4vh); padding: calc(var(--u) * 0.4vh) 0.8vw; border-radius: 1.2vh; background: var(--surface-alt); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chip.long { font-size: calc(var(--u) * 2.6vh); letter-spacing: -0.02em; padding-left: 0.5vw; padding-right: 0.5vw; }
+.side.current .chip { background: var(--chip); }
+/* From five sides: each figure on one line, its label before it. */
+.many .stat { flex-direction: row; align-items: baseline; gap: 0.5vw; }
+.many .stats { gap: 1.4vw; }
+/* Killer: hearts for the lives, broken once taken; the killer's badge. */
+.hearts { display: flex; gap: calc(var(--u) * 0.8vh); }
+.heart { width: calc(var(--u) * 7vh); height: calc(var(--u) * 7vh); }
+.heart.full path { fill: var(--danger); }
+.heart.broken path { fill: #CFCAC0; }
+.side.current .heart.full path { fill: var(--ink, #fff); }
+.side.current .heart.broken path { fill: var(--ink, #fff); fill-opacity: 0.32; }
+.badge { display: inline-flex; align-items: center; gap: 0.5vw; font-weight: 700; font-size: calc(var(--u) * 2.4vh); color: var(--accent); }
+.badge svg { width: calc(var(--u) * 3vh); height: calc(var(--u) * 3vh); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.side.current .badge { color: var(--ink, #fff); }
+/* Cricket: the marks on each number, a stroke, a cross, a closed circle. */
+.marks { display: flex; gap: 0.4vw; }
+.cell { flex: 1; display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 0.2vh); border-radius: 1vh; background: var(--surface-alt); padding: calc(var(--u) * 0.5vh) 0; min-width: 0; }
+.side.current .cell { background: var(--chip); }
+.cell .t { font-family: var(--display); font-weight: 900; font-size: calc(var(--u) * 2.2vh); color: var(--text-2); }
+.side.current .cell .t { color: var(--ink, #fff); opacity: 0.8; }
+.cell svg { width: calc(var(--u) * 4vh); height: calc(var(--u) * 4vh); fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; }
+.cell.dead { opacity: 0.35; }
+/* The clock: the way round. */
+.progress { display: flex; align-items: center; gap: 1vw; }
+.bar { flex: 1; height: calc(var(--u) * 1.6vh); border-radius: 99px; background: var(--surface-alt); overflow: hidden; }
+.side.current .bar { background: var(--chip); }
+.bar i { display: block; height: 100%; border-radius: 99px; background: var(--accent); }
+.side.current .bar i { background: var(--ink, #fff); }
+/* Halve It: the route of the evening, the round's target lit. */
+.route { display: flex; gap: 0.6vw; align-items: center; }
+.route span { font-family: var(--display); font-weight: 900; font-size: 3vh; padding: 0.5vh 1vw; border-radius: 1.2vh; background: var(--surface-alt); color: var(--text-2); }
+.route span.done { opacity: 0.4; }
+.route span.current { background: var(--accent); color: #fff; font-size: 3.6vh; }
 
 .visit { background: var(--surface); border-radius: 3vh; box-shadow: var(--raised); padding: 2.6vh 2.4vw; display: flex; align-items: center; gap: 2vw; }
 .visit .who { font-weight: 700; font-size: 3.4vh; min-width: 18vw; }
@@ -54,6 +105,14 @@ body.badge #app { padding-bottom: calc(64px + 1.5vh); }
 .slot.full { border: none; background: var(--surface-alt); }
 .total { font-family: var(--display); font-weight: 900; font-size: 8vh; min-width: 10vw; text-align: right; font-variant-numeric: tabular-nums; }
 .checkout { font-weight: 700; font-size: 3vh; color: var(--accent); white-space: nowrap; }
+/* Five sides and more: the cards need the height, the visit bar and the gaps get smaller. */
+#app.crowd { gap: 2vh; padding-top: 3vh; }
+.crowd .title { font-size: 4.4vh; }
+.crowd .visit { padding: 1.4vh 2vw; }
+.crowd .slot { height: 6vh; font-size: 3.6vh; }
+.crowd .total { font-size: 5.6vh; }
+.crowd .visit .who { font-size: 2.8vh; }
+.crowd .sides { gap: 1.6vh 1.2vw; }
 
 .callout { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center; pointer-events: none; background: rgba(22, 23, 27, 0.35); }
 .callout div { background: var(--surface); box-shadow: var(--raised); border-radius: 5vh; padding: 5vh 6vw; text-align: center; animation: pop 220ms cubic-bezier(.23, 1, .32, 1); }
@@ -80,7 +139,16 @@ body.badge #app { padding-bottom: calc(64px + 1.5vh); }
 </style>
 </head>
 <body>
+<!-- The crack of a broken heart: each half of the heart is drawn inside one of these. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <clipPath id="crack-left" clipPathUnits="userSpaceOnUse"><polygon points="0,0 12.8,0 10.6,10.4 13.4,13.2 11.2,24 0,24"/></clipPath>
+  <clipPath id="crack-right" clipPathUnits="userSpaceOnUse"><polygon points="12.8,0 24,0 24,24 11.2,24 13.4,13.2 10.6,10.4"/></clipPath>
+</defs></svg>
 <div id="app"><div class="idle"><h1>Tult<b>.</b></h1><p>En attente de la partie…</p></div></div>
+<!-- Keeps the TV awake (see keepAwake): two black pixels, muted, on a loop. Visible on purpose: a
+     browser pauses a muted video it can't see. -->
+<video id="awake" src="veille.mp4" muted loop playsinline autoplay aria-hidden="true"
+  style="position:fixed;left:0;bottom:0;width:2px;height:2px;opacity:0.02;pointer-events:none"></video>
 <script>
 // The board sent by the phone (BoardSnapshot, v1), and when its callout should fade.
 var NAMESPACE = 'urn:x-cast:app.tult.board';
@@ -96,17 +164,120 @@ function esc(text) {
 function initials(name) { return esc((name || '?').slice(0, 2).toUpperCase()); }
 /** Columns for this many sides: one row up to 4, two rows beyond. */
 function columns(n) { return n <= 4 ? n : Math.ceil(n / 2); }
-/** The figure's size: as big as the tiles allow. */
-function figureSize(n) { return n <= 2 ? 26 : n <= 3 ? 22 : n <= 4 ? 18 : n <= 6 ? 13 : 11; }
+/** The figure's size before fitting: big, a little less where the game adds a row (hearts, marks, the way round). */
+function figureSize(n, extraRow) {
+  var size = n <= 2 ? 22 : n <= 3 ? 19 : n <= 4 ? 16 : n <= 6 ? 12 : 11;
+  return extraRow ? Math.round(size * 0.8) : size;
+}
 
-function sideHtml(s, n) {
-  var style = s.current ? 'background:' + s.color + ';border-color:' + s.color + ';--ink:' + (s.ink || '#fff') : s.next ? 'border-color:' + s.color : '';
+/**
+ * Sets the cards' unit to the biggest at which everything shows: no card taller than its tile, no
+ * row of figures, marks or visits cut. Names, games and crowds differ too much for fixed sizes.
+ */
+function fit() {
+  var sides = document.querySelector('.sides');
+  if (!sides) return;
+  var cards = sides.querySelectorAll('.side');
+  var overflows = function () {
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].scrollHeight > cards[i].clientHeight + 1) return true;
+      var rows = cards[i].querySelectorAll('.chips, .marks, .stats, .hearts, .progress');
+      for (var j = 0; j < rows.length; j++) if (rows[j].scrollWidth > rows[j].clientWidth + 1) return true;
+    }
+    return false;
+  };
+  var lo = 0.35;
+  var hi = 1.25;
+  for (var k = 0; k < 8; k++) {
+    var mid = (lo + hi) / 2;
+    sides.style.setProperty('--u', String(mid));
+    if (overflows()) hi = mid;
+    else lo = mid;
+  }
+  sides.style.setProperty('--u', String(lo));
+}
+
+var HEART = 'M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z';
+/** A life: a full heart, or one broken in two once taken. */
+function heartHtml(full) {
+  if (full) return '<svg class="heart full" viewBox="0 0 24 24"><path d="' + HEART + '"/></svg>';
+  return '<svg class="heart broken" viewBox="0 0 24 24">' +
+    '<g clip-path="url(#crack-left)" transform="translate(-0.9 0.3) rotate(-9 12 20)"><path d="' + HEART + '"/></g>' +
+    '<g clip-path="url(#crack-right)" transform="translate(0.9 0.3) rotate(9 12 20)"><path d="' + HEART + '"/></g></svg>';
+}
+var SKULL = '<svg viewBox="0 0 24 24"><path d="M8 20v2h8v-2"/><path d="M12.5 17l-.5-1-.5 1h1z"/><path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/></svg>';
+/** A Cricket mark: nothing, a stroke, a cross, a cross in a circle (closed). */
+function markHtml(m) {
+  var lines = m >= 1 ? '<path d="M6.5 17.5l11-11"/>' : '';
+  if (m >= 2) lines += '<path d="M6.5 6.5l11 11"/>';
+  if (m >= 3) lines += '<circle cx="12" cy="12" r="9.5"/>';
+  return '<svg viewBox="0 0 24 24">' + lines + '</svg>';
+}
+
+/** What only the game shows of a side: Killer's hearts, Cricket's marks, the clock's way round. */
+function gameRowHtml(s, b) {
+  if (s.lives) {
+    var hearts = '';
+    for (var i = 0; i < s.lives.total; i++) hearts += heartHtml(i < s.lives.left);
+    var badge = s.killer && !s.out ? '<span class="badge">' + SKULL + esc((b.labels && b.labels.killer) || 'Killer') + '</span>' : '';
+    return '<div class="progress"><div class="hearts">' + hearts + '</div>' + badge + '</div>';
+  }
+  if (s.marks && b.targets) {
+    return '<div class="marks">' + b.targets.map(function (t, k) {
+      return '<div class="cell' + (b.closed && b.closed[k] ? ' dead' : '') + '"><span class="t">' + esc(t === 'Bull' ? 'B' : t) + '</span>' + markHtml(s.marks[k] || 0) + '</div>';
+    }).join('') + '</div>';
+  }
+  if (s.progress) {
+    var pct = s.progress.total ? Math.round((s.progress.done / s.progress.total) * 100) : 0;
+    return '<div class="progress"><div class="bar"><i style="width:' + pct + '%"></i></div><span class="k">' + s.progress.done + ' / ' + s.progress.total + '</span></div>';
+  }
+  return '';
+}
+
+function sideHtml(s, n, b) {
+  var ink = s.ink || '#fff';
+  // The chips of the side at the oche: a veil of its ink on its colour.
+  var chip = ink.toUpperCase() === '#FFFFFF' || ink.toUpperCase() === '#FFF' ? 'rgba(255,255,255,0.22)' : 'rgba(22,23,27,0.12)';
+  var current = s.current && !s.out;
+  var style = current ? 'background:' + s.color + ';border-color:' + s.color + ';--ink:' + ink + ';--chip:' + chip : s.next ? 'border-color:' + s.color : '';
   var dot = '<div class="dot" style="background:' + esc(s.color) + '">' + initials(s.name) + '</div>';
-  var tag = s.current ? '<span class="tag">À toi</span>' : s.place ? '<span class="place">' + s.place + (s.place === 1 ? 're' : 'e') + '</span>' : '';
-  return '<div class="side' + (s.current ? ' current' : '') + '" style="' + style + '">' +
+  var tag = s.out ? '<span class="tag out">' + esc((b.labels && b.labels.eliminated) || 'Éliminé') + '</span>'
+    : current ? '<span class="tag">À toi</span>'
+    : s.place ? '<span class="place">' + s.place + (s.place === 1 ? 're' : 'e') + '</span>' : '';
+  var row = gameRowHtml(s, b);
+  // Killer: the side's number in big (the hearts say the lives); elsewhere the game's own figure.
+  var figure = s.lives && s.number != null ? String(s.number) : s.figure;
+  return '<div class="side' + (current ? ' current' : '') + (s.out ? ' out' : '') + '" style="' + style + '">' +
     '<div class="top">' + dot + '<div class="name">' + esc(s.name) + '</div>' + tag + '</div>' +
-    '<div class="figure" style="font-size:' + figureSize(n) + 'vh">' + esc(s.figure) + '</div>' +
-    '<div class="meta"><span>' + esc(s.detail) + '</span><span>' + esc(s.legs) + '</span></div></div>';
+    '<div class="figure' + (s.lives && s.killer ? ' killer' : '') + '" style="font-size:calc(var(--u) * ' + figureSize(n, !!row) + 'vh)">' + esc(figure) + '</div>' +
+    row +
+    extraHtml(s, b) +
+    // The darts thrown are among the figures when the phone sends them.
+    ((s.stats ? '' : s.detail) || s.legs ? '<div class="meta"><span>' + esc(s.stats ? '' : s.detail) + '</span><span>' + esc(s.legs) + '</span></div>' : '') +
+    '</div>';
+}
+
+/** The figures of the whole game and the last visits, newest first. */
+function extraHtml(s, b) {
+  var stats = (s.stats || []).map(function (x) {
+    return '<div class="stat"><span class="k">' + esc(x.label) + '</span><span class="v">' + esc(x.value) + '</span></div>';
+  }).join('');
+  var recent = '';
+  if (s.recent && s.recent.length) {
+    recent = '<div class="recent"><span class="k">' + esc((b.labels && b.labels.recent) || 'Dernières volées') + '</span><div class="chips">' +
+      s.recent.slice().reverse().map(function (r) {
+        var text = r.replace(/ · /g, ' ');
+        return '<span class="chip' + (text.length > 4 ? ' long' : '') + '">' + esc(text) + '</span>';
+      }).join('') + '</div></div>';
+  }
+  if (!stats && !recent) return '';
+  return '<div class="extra">' + (stats ? '<div class="stats">' + stats + '</div>' : '') + recent + '</div>';
+}
+
+/** Halve It: the route of targets in the header, the round's lit. */
+function routeHtml(route) {
+  if (!route) return '';
+  return '<div class="route">' + route.map(function (r) { return '<span class="' + r.state + '">' + esc(r.label) + '</span>'; }).join('') + '</div>';
 }
 
 function visitHtml(v) {
@@ -135,11 +306,14 @@ function render(b) {
   if (!b || b.v !== 1) return;
   var app = document.getElementById('app');
   var n = b.sides.length;
-  var head = '<div class="head"><div><span class="title">' + esc(b.title) + '</span> <span class="sub">' + esc(b.subtitle) + '</span></div><div class="brand">Tult<b>.</b></div></div>';
+  var head = '<div class="head"><div><span class="title">' + esc(b.title) + '</span> <span class="sub">' + esc(b.subtitle) + '</span></div>' +
+    (b.final ? '' : routeHtml(b.route)) + '<div class="brand">Tult<b>.</b></div></div>';
   var body = b.final
     ? finalHtml(b)
-    : '<div class="sides" style="grid-template-columns:repeat(' + columns(n) + ',minmax(0,1fr))">' + b.sides.map(function (s) { return sideHtml(s, n); }).join('') + '</div>' + visitHtml(b.visit);
+    : '<div class="sides' + (n > 4 ? ' many' : n <= 2 ? ' few' : '') + '" style="grid-template-columns:repeat(' + columns(n) + ',minmax(0,1fr))">' + b.sides.map(function (s) { return sideHtml(s, n, b); }).join('') + '</div>' + visitHtml(b.visit);
+  app.className = !b.final && n > 4 ? 'crowd' : '';
   app.innerHTML = head + body;
+  fit();
   // A new big moment: shown in large, then gone.
   if (b.callout && (!shown || !shown.callout || shown.callout.at !== b.callout.at)) {
     // One at a time: a new moment replaces the one still showing.
@@ -155,9 +329,39 @@ function render(b) {
 }
 
 // Netlify adds its badge as an iframe once its own script has loaded, before or after this one.
-function clearBadge() { document.body.classList.toggle('badge', !!document.getElementById('nl-badge-frame')); }
+function clearBadge() {
+  var badge = !!document.getElementById('nl-badge-frame');
+  if (document.body.classList.contains('badge') === badge) return;
+  document.body.classList.toggle('badge', badge);
+  // Less height for the board: the cards are fitted again.
+  fit();
+}
 clearBadge();
 new MutationObserver(clearBadge).observe(document.body, { childList: true });
+
+/**
+ * The TV must not doze off during a game: between two visits nothing plays, and a box can start its
+ * screensaver or go to sleep. A tiny silent video on a loop is what keeps Android TV boxes awake
+ * (media is playing); the screen wake lock, where the browser has one, asks the same plainly.
+ */
+function keepAwake() {
+  var video = document.getElementById('awake');
+  var play = function () { if (video && video.paused) video.play().catch(function () {}); };
+  play();
+  // Played again if anything stopped it (a hidden page coming back, a hiccup).
+  setInterval(play, 30000);
+  if (navigator.wakeLock && navigator.wakeLock.request) {
+    var ask = function () { navigator.wakeLock.request('screen').catch(function () {}); };
+    ask();
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'visible') { ask(); play(); }
+    });
+  }
+}
+keepAwake();
+// The fonts arrive after the first board, and a TV can change size: the cards are fitted again.
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+window.addEventListener('resize', fit);
 
 var demo = /[?&]demo/.test(location.search);
 if (!demo && window.cast && cast.framework) {
@@ -176,13 +380,68 @@ if (!demo && window.cast && cast.framework) {
   var sample = {
     v: 1, title: '501', subtitle: 'set 1, manche 2',
     sides: [
-      { name: 'Alice', color: '#2874CF', figure: '281', detail: '9 fléchettes', legs: '1 manche', current: false, next: false, place: null },
-      { name: 'David', color: '#EDA100', ink: '#16171B', figure: '140', detail: '8 fléchettes', legs: '0 manche', current: true, next: false, place: null },
-      { name: 'Bob', color: '#27B8FC', figure: '325', detail: '9 fléchettes', legs: '0 manche', current: false, next: true, place: null },
+      { name: 'Alice', color: '#2874CF', figure: '281', detail: '9 fléchettes', legs: '1 manche', current: false, next: false, place: null,
+        stats: [{ label: 'Moyenne', value: '48,7' }, { label: 'Fléchettes', value: '42' }], recent: ['45', '60', '81'] },
+      { name: 'David', color: '#EDA100', ink: '#16171B', figure: '140', detail: '8 fléchettes', legs: '0 manche', current: true, next: false, place: null,
+        stats: [{ label: 'Moyenne', value: '52,1' }, { label: 'Fléchettes', value: '41' }], recent: ['100', 'Bust', '41'] },
+      { name: 'Bob', color: '#27B8FC', figure: '325', detail: '9 fléchettes', legs: '0 manche', current: false, next: true, place: null,
+        stats: [{ label: 'Moyenne', value: '39,4' }, { label: 'Fléchettes', value: '42' }], recent: ['26', '41', '45'] },
     ],
     visit: { thrower: 'David', darts: ['T20', '20'], total: 80, checkout: 'T20 · D10' },
     callout: null, final: null,
+    labels: { recent: 'Dernières volées' },
   };
+  // ?demo&game=killer&n=6: another game, as many sides as asked (2 to 8), to see the board crowded.
+  var asked = Number((/[?&]n=(\d)/.exec(location.search) || [])[1]) || 3;
+  var game = (/[?&]game=(\w+)/.exec(location.search) || [])[1] || 'x01';
+  var names = ['Alice', 'David', 'Bob', 'Chloé', 'Emma', 'Farid', 'Gaëlle', 'Hugo'];
+  var colors = ['#2874CF', '#EDA100', '#27B8FC', '#890120', '#4A3AA7', '#008300', '#1BAF7A', '#E87BA4'];
+  var stat = function (a, b) { return [{ label: a[0], value: a[1] }, { label: b[0], value: b[1] }]; };
+  sample.game = game;
+  sample.sides = names.slice(0, Math.max(2, Math.min(8, asked))).map(function (name, i) {
+    var side = { name: name, color: colors[i], ink: i === 1 ? '#16171B' : '#FFFFFF', detail: '', legs: i === 0 ? '1 manche' : '0 manche', current: i === 1, next: i === 2, place: null };
+    if (game === 'killer') {
+      var left = [3, 2, 0, 1, 3, 2, 1, 3][i];
+      return Object.assign(side, { figure: left + ' vies', number: [14, 9, 20, 3, 17, 6, 11, 1][i], lives: { left: left, total: 3 }, killer: i % 2 === 0 || i === 1, out: left === 0,
+        stats: stat(['Vies prises', String(i % 3)], ['Fléchettes', String(18 + i * 3)]), recent: ['D14 · 9 · —', 'D9 · D9 · 5', '— · — · D3'] });
+    }
+    if (game === 'cricket') {
+      return Object.assign(side, { figure: String([45, 60, 0, 19, 32, 0, 15, 40][i]), marks: [[3, 3, 2, 1, 0, 0, 0], [3, 3, 3, 0, 2, 1, 0], [2, 1, 0, 0, 0, 0, 0], [3, 2, 3, 1, 0, 0, 1]][i % 4],
+        stats: stat(['Marques par tour', ['2,10', '2,45', '1,20', '1,85'][i % 4]], ['Fléchettes', String(24 + i)]), recent: ['T20 · 19 · —', '20 · 20 · T19', '— · 18 · 18'] });
+    }
+    if (game === 'clock') {
+      var done = [12, 9, 15, 6, 11, 4, 8, 13][i];
+      return Object.assign(side, { figure: String(done + 1), progress: { done: done, total: 20 },
+        stats: stat(['Réussite', ['42 %', '35 %', '51 %', '28 %'][i % 4]], ['Fléchettes', String(30 + i * 2)]), recent: ['12 · — · 13', '— · 9 · —', '15 · 16 · —'] });
+    }
+    if (game === 'halveit') {
+      return Object.assign(side, { figure: String([104, 87, 152, 61, 98, 120, 75, 43][i]),
+        stats: stat(['Réussite', ['38 %', '30 %', '45 %', '22 %'][i % 4]], ['Fléchettes', String(12 + i)]), recent: [['30', '÷2', '32'], ['15', '16', '÷2'], ['45', '32', '40']][i % 3] });
+    }
+    return Object.assign(side, { figure: String(501 - i * 37 - 120), stats: stat(['Moyenne', ['48,7', '52,1', '39,4'][i % 3]], ['Fléchettes', String(41 + i)]), recent: [['45', '60', '81'], ['100', 'Bust', '41'], ['26', '41', '45']][i % 3] });
+  });
+  if (game === 'halveit') {
+    sample.title = 'Halve It';
+    sample.subtitle = '';
+    sample.route = ['15', '16', 'Double', '17', '18', 'Triple', '19', '20', 'Bull'].map(function (label, k) { return { label: label, state: k < 3 ? 'done' : k === 3 ? 'current' : 'next' }; });
+    sample.visit = { thrower: 'David', darts: ['17', '—'], total: null, checkout: null };
+  }
+  if (game === 'cricket') {
+    sample.title = 'Cricket';
+    sample.targets = ['20', '19', '18', '17', '16', '15', 'Bull'];
+    sample.closed = [true, false, false, false, false, false, false];
+    sample.visit = { thrower: 'David', darts: ['T20', '19'], total: null, checkout: null };
+  }
+  if (game === 'killer') {
+    sample.title = 'Killer';
+    sample.subtitle = 'Simple · 3 vies';
+    sample.labels = { recent: 'Dernières volées', eliminated: 'Éliminé', killer: 'Killer' };
+    sample.visit = { thrower: 'David', darts: ['D9'], total: null, checkout: null };
+  }
+  if (game === 'clock') {
+    sample.title = 'Tour de l’horloge';
+    sample.visit = { thrower: 'David', darts: ['10'], total: null, checkout: null };
+  }
   if (/final/.test(location.search)) {
     sample.final = { winner: 'Alice', ranking: ['1. Alice', '2. David', '3. Bob'], ratings: [
       { name: 'Alice', rating: '8,5', line: 'A conclu avec un finish de 81, bravo !' },
