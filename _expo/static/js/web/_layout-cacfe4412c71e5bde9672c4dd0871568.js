@@ -25,8 +25,8 @@ __d(function (global, require, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, expor
   module.exports = Object.assign({
     "navigationMenuRoot": "EFtDwW_navigationMenuRoot",
     "tabContent": "EFtDwW_tabContent",
-    "navigationMenuTrigger": "EFtDwW_navigationMenuTrigger",
     "nativeTabsContainer": "EFtDwW_nativeTabsContainer",
+    "navigationMenuTrigger": "EFtDwW_navigationMenuTrigger",
     "tabText": "EFtDwW_tabText",
     "tabBadge": "EFtDwW_tabBadge",
     "emptyTabBadge": "EFtDwW_emptyTabBadge"
@@ -40,13 +40,13 @@ __d(function (global, require, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, expor
         "$$css": true,
         "_": "EFtDwW_tabContent"
       },
-      "navigationMenuTrigger": {
-        "$$css": true,
-        "_": "EFtDwW_navigationMenuTrigger"
-      },
       "nativeTabsContainer": {
         "$$css": true,
         "_": "EFtDwW_nativeTabsContainer"
+      },
+      "navigationMenuTrigger": {
+        "$$css": true,
+        "_": "EFtDwW_navigationMenuTrigger"
       },
       "tabText": {
         "$$css": true,
