@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.tult.app",
+      "sha256_cert_fingerprints": [
+        "55:86:E9:AD:48:E2:BF:E6:8B:43:27:24:76:59:85:CD:63:6D:13:8F:A2:E7:FA:92:C9:AB:17:7C:ED:2F:65:80",
+        "8F:41:5D:F0:D2:9F:2C:41:97:02:8D:7D:D6:D4:35:D4:48:8E:C8:EE:A0:03:81:CB:89:3E:70:13:7C:FC:44:6B",
+        "4C:34:B1:1D:E2:F9:BB:C3:EA:3F:FB:99:16:20:CB:E9:D3:62:98:73:5E:7C:A7:55:BE:16:B7:75:EC:B3:4D:44"
+      ]
+    }
+  }
+]
