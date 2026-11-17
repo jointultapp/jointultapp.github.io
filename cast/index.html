@@ -148,6 +148,10 @@ body.netlify-badge #app { padding-bottom: calc(64px + 1.5vh); }
 .idle h1 { font-family: var(--display); font-weight: 900; font-size: 18vh; letter-spacing: -0.03em; }
 .idle h1 b { color: var(--accent); }
 .idle p { font-weight: 700; font-size: 3.6vh; color: var(--text-2); }
+/* A live tournament or night: its big screen (tult.app/live/<code>) over the whole TV. */
+#live { position: fixed; inset: 0; width: 100vw; height: 100vh; border: 0; background: #0F1013; display: none; }
+body.live #live { display: block; }
+body.live #app { display: none; }
 </style>
 </head>
 <body>
@@ -157,6 +161,7 @@ body.netlify-badge #app { padding-bottom: calc(64px + 1.5vh); }
   <clipPath id="crack-right" clipPathUnits="userSpaceOnUse"><polygon points="12.8,0 24,0 24,24 11.2,24 13.4,13.2 10.6,10.4"/></clipPath>
 </defs></svg>
 <div id="app"><div class="idle"><h1>Tult<b>.</b></h1><p>En attente de la partie…</p></div></div>
+<iframe id="live" title="Tult" allow="autoplay; screen-wake-lock"></iframe>
 <!-- Keeps the TV awake (see keepAwake): two black pixels, muted, on a loop. Visible on purpose: a
      browser pauses a muted video it can't see. -->
 <video id="awake" src="veille.mp4" muted loop playsinline autoplay aria-hidden="true"
@@ -398,8 +403,33 @@ function render(b) {
   shown = b;
 }
 
-/** A message from the phone: a player's photo (kept, then the board drawn again), or the board. */
+/** A live code as Tult makes them (K7Q3-2MXA): nothing else goes into the address. */
+var LIVE_CODE = /^[2-9A-HJKMNP-TV-Z]{4}-[2-9A-HJKMNP-TV-Z]{4}$/;
+
+/**
+ * A live tournament or night: its big screen, the same page as on a computer, over the whole TV. It
+ * follows the scores by itself. A board sent later (a game played meanwhile) takes the TV back.
+ */
+function showLive(code) {
+  if (typeof code !== 'string' || !LIVE_CODE.test(code)) return;
+  var frame = document.getElementById('live');
+  var src = '/live/' + code;
+  if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+  document.body.classList.add('live');
+}
+
+function hideLive() {
+  if (!document.body.classList.contains('live')) return;
+  document.body.classList.remove('live');
+  document.getElementById('live').removeAttribute('src');
+}
+
+/** A message from the phone: a live code, a player's photo (kept, then the board drawn again), or the board. */
 function receive(data) {
+  if (data && data.type === 'live') {
+    showLive(data.code);
+    return;
+  }
   if (data && data.type === 'photo') {
     // Only a JPEG as a data URL is kept: it goes straight into an <img>.
     if (typeof data.key === 'string' && typeof data.data === 'string' && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(data.data)) {
@@ -408,6 +438,7 @@ function receive(data) {
     }
     return;
   }
+  hideLive();
   render(data);
 }
 
@@ -459,6 +490,9 @@ if (!demo && window.cast && cast.framework) {
   options.disableIdleTimeout = true;
   options.skipPlayersLoad = true;
   context.start(options);
+} else if (demo && /[?&]live=/.test(location.search)) {
+  // ?demo&live=K7Q3-2MXA: a live tournament's big screen, as the phone would send it.
+  showLive(decodeURIComponent((location.search.match(/[?&]live=([^&]+)/) || [])[1] || ''));
 } else if (demo) {
   var sample = {
     v: 1, title: '501', subtitle: 'set 1, manche 2',
