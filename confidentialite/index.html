@@ -65,7 +65,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
       <a href="/" style="color:inherit;text-decoration:none"><span>Tult</span></a>
     </div>
     <h1>Politique de confidentialité</h1>
-    <p class="meta">En vigueur le 17 novembre 2026 · Applications iOS et Android</p>
+    <p class="meta">En vigueur le 18 novembre 2026 · Applications iOS et Android</p>
     <p class="meta"><a href="/privacy/" hreflang="en" lang="en">English version</a></p>
   </header>
 
@@ -121,7 +121,8 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
           <tr><td>Joueurs de vos parties : nom, couleur et emoji, sans photo</td><td>Afficher leurs noms dans les parties partagées</td></tr>
           <tr><td>Parties terminées ou abandonnées, tournois et soirées multi-jeux : jeu, réglages, joueurs, scores, lancers, barème, dates et lieu si vous l’indiquez, sans photo ni favori</td><td>Compter chaque partie dans les statistiques des joueurs qui ont un compte, et la retrouver sur un autre téléphone</td></tr>
           <tr><td>Amis, liens d’invités, et parties que vous retirez de vos statistiques</td><td>Faire fonctionner les amis, les invités qui retrouvent leurs parties et «&nbsp;Retirer de mes stats&nbsp;»</td></tr>
-          <tr><td>Tournois et soirées multi-jeux en direct que vous organisez (option premium) : nom, lieu si vous l’indiquez, noms des équipes et des joueurs, couleurs, emojis, matchs, épreuves, terrains, scores et points, sans photo</td><td>Les afficher sur le grand écran et sur la page des participants</td></tr>
+          <tr><td>Tournois et soirées multi-jeux en direct que vous organisez (option premium) : nom, lieu si vous l’indiquez, noms des équipes et des joueurs, couleurs, emojis, matchs, épreuves, terrains, scores et points, statistiques du tournoi, sans photo</td><td>Les afficher sur le grand écran et sur la page des participants</td></tr>
+          <tr><td>Match à l’affiche d’un tournoi en direct, si vous en choisissez un : son score au fil des volées ou des points (reste, dernière volée, moyenne, manches), ses lancers, et le compte du téléphone marqueur s’il est confié à un marqueur</td><td>Le suivre en direct sur le grand écran et chez les participants ; les lancers ne servent qu’à l’organisateur, pour enregistrer la partie</td></tr>
           <tr><td>Espaces organisateur, si vous en créez (option premium) : nom, couleur, choix de compter ou non vos propres parties, et qui y a accès (pour l’instant, vous seul), jamais le logo</td><td>Retrouver vos espaces sur un autre téléphone, et n’en ouvrir l’accès qu’à leurs membres</td></tr>
           <tr><td>Participants de vos espaces organisateur : nom, couleur et emoji, sans photo, rattachés à l’espace et jamais à un compte</td><td>Afficher leurs noms dans les parties, tournois et soirées de l’espace</td></tr>
           <tr><td>Option premium, si vous l’avez : sa date de fin</td><td>Débloquer le tournoi en direct, les soirées multi-jeux de plus de 3 épreuves et les espaces organisateur</td></tr>
@@ -173,8 +174,10 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
     <h2>Tournoi en direct</h2>
     <p>Avec l’option premium, l’organisateur d’un tournoi peut l’afficher sur un grand écran et le faire suivre aux participants, sur tult.app, avec le code du tournoi ou son QR code. Ces pages montrent le nom du tournoi, son lieu s’il est indiqué, les noms des équipes et des joueurs, leurs couleurs et leurs emojis, les matchs, les terrains et les scores, jamais de photo. Toute personne qui a le code peut les voir, sans compte : n’y mettez que des noms que les participants acceptent de voir affichés.</p>
     <p>Sur la page des participants, l’équipe que vous suivez est retenue sur votre téléphone, ou dans votre navigateur sur le web. Dans l’application, si vous indiquez lequel des joueurs vous êtes, le tournoi compte dans vos statistiques une fois terminé.</p>
+    <p>Pendant le tournoi, ces pages montrent aussi ses statistiques, calculées sur le téléphone de l’organisateur à partir des résultats et des parties jouées dans l’application : par exemple la meilleure moyenne d’un joueur, le nombre de 180, la plus grosse finition, une remontada ou le match le plus serré, avec le nom du joueur ou de l’équipe. Si l’organisateur met un match «&nbsp;à l’affiche&nbsp;», son score est publié en direct, volée par volée ou point par point (reste, dernière volée, moyenne, manches, finition possible). Ces informations sont visibles, comme le reste de la page, par toute personne qui a le code du tournoi.</p>
+    <p>L’organisateur peut confier le match à l’affiche à un «&nbsp;marqueur&nbsp;» : un autre téléphone qui a l’application, sans option premium, qui le rejoint avec un code à 6 chiffres valable 12 heures. Le compte invisible de ce téléphone est alors enregistré comme marqueur de ce match, et lui seul, avec l’organisateur, peut le modifier. Les lancers saisis par le marqueur passent par notre serveur jusqu’au téléphone de l’organisateur, qui enregistre la partie dans son tournoi ; ils ne sont montrés à personne d’autre. Le match n’entre ni dans l’historique ni dans les statistiques du marqueur. Le lien entre le marqueur et le match est effacé avec le tournoi en direct.</p>
     <p>Pour un concours d’un espace organisateur, ces pages montrent aussi le nom, la couleur et le logo de l’espace. Une fois un tournoi terminé, l’organisateur peut aussi afficher un code de résultats : les participants qui ont l’application le scannent et indiquent lequel des joueurs ils sont, pour que le tournoi compte dans leurs statistiques. L’organisateur ne voit pas qui l’a fait.</p>
-    <p>Un tournoi en direct n’est plus affiché 30 jours après sa dernière modification. Il est effacé quand l’organisateur le supprime ou supprime son compte.</p>
+    <p>Un tournoi en direct n’est plus affiché 30 jours après sa dernière modification. Il est effacé, avec son match à l’affiche et ses lancers, quand l’organisateur le supprime ou supprime son compte.</p>
   </section>
 
   <section>
@@ -197,7 +200,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
 
   <section>
     <h2>Les autres joueurs</h2>
-    <p>Si vous ajoutez des proches comme joueurs, en particulier avec leur photo, assurez-vous qu’ils sont d’accord. Leurs noms, couleurs et emojis sont conservés en ligne avec vos parties, et ne sont visibles que des personnes qui ont joué ces parties, sauf dans un tournoi en direct, visible par toute personne qui a son code. Leurs photos restent sur votre téléphone. Pour les participants d’un concours, voir «&nbsp;Espaces organisateur&nbsp;».</p>
+    <p>Si vous ajoutez des proches comme joueurs, en particulier avec leur photo, assurez-vous qu’ils sont d’accord. Leurs noms, couleurs et emojis sont conservés en ligne avec vos parties, et ne sont visibles que des personnes qui ont joué ces parties, sauf dans un tournoi en direct, visible par toute personne qui a son code, avec les statistiques de leurs matchs et, pour le match à l’affiche, leur score en direct : prévenez-les. Leurs photos restent sur votre téléphone. Pour les participants d’un concours, voir «&nbsp;Espaces organisateur&nbsp;».</p>
   </section>
 
   <section>
@@ -222,7 +225,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
     <p>Cette politique est mise à jour quand l’application évolue. La version à jour est toujours publiée sur cette page, avec sa date d’entrée en vigueur.</p>
   </section>
 
-  <footer>Tult · Politique de confidentialité · Dernière mise à jour : 17 novembre 2026</footer>
+  <footer>Tult · Politique de confidentialité · Dernière mise à jour : 18 novembre 2026</footer>
 </div>
 </body>
 </html>
