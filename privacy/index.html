@@ -64,7 +64,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
       <a href="/" style="color:inherit;text-decoration:none"><span>Tult</span></a>
     </div>
     <h1>Privacy policy</h1>
-    <p class="meta">In force from 18 November 2026 · iOS and Android apps</p>
+    <p class="meta">In force from 21 November 2026 · iOS and Android apps</p>
     <p class="meta"><a href="/confidentialite/" hreflang="fr" lang="fr">Version française</a></p>
   </header>
 
@@ -101,7 +101,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
         </tbody>
       </table>
     </div>
-    <p>Only the information described in the next part is sent online. The app includes no usage analytics, advertising, tracking or crash reporting tool.</p>
+    <p>Only the information described in the next part is sent online. The app includes no advertising, tracking or crash reporting tool. The only tool that sends usage statistics is the one that reads handwriting, if you use the Slate (see “The Slate”).</p>
   </section>
 
   <section>
@@ -138,7 +138,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
       <li><strong>Supabase</strong> (Supabase Inc.) hosts the database and manages the accounts.</li>
       <li><strong>Resend</strong> (Resend Inc.) sends the email containing your sign-in code, if you link your account with an email address. It receives your address and that code.</li>
       <li><strong>Google</strong> identifies you if you choose to sign in with Google, under its own privacy policy. Tult then receives your email address.</li>
-      <li><strong>Netlify</strong> (Netlify Inc.) hosts the tult.app website, including the live tournament pages. Like any host, it receives the IP address of the visitors of these pages.</li>
+      <li><strong>Cloudflare</strong> (Cloudflare Inc.) hosts the tult.app website, including the live tournament pages. Like any host, it receives the IP address of the visitors of these pages.</li>
     </ul>
     <p>These companies are based in the United States. Transfers of data outside the European Union are covered by the European Commission’s standard contractual clauses. No data is sold or used for advertising.</p>
   </section>
@@ -195,6 +195,12 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
   <section>
     <h2>Voice announcements</h2>
     <p>If you turn on voice announcements, the scores are read by the text-to-speech engine built into your phone (iOS or Android). The app does not use the microphone and records no sound.</p>
+  </section>
+
+  <section>
+    <h2>The Slate</h2>
+    <p>If you write your points by hand on the Slate, your writing is read on your phone by ML Kit, a Google tool built into the app. The handwriting model (about 20 MB) is downloaded once from Google’s servers, when you ask for it. Your strokes never leave the phone and are not kept: only the number you confirm is saved, as if it had been typed.</p>
+    <p>As with all its ML Kit tools, Google receives technical measurements, for diagnostics and usage statistics: phone model and version, app name and version, an installation identifier not used to identify you, the model’s language, how long readings take, and errors. They are encrypted in transit, Google passes them on to no one, and they fall under Google’s privacy policy. If you would rather send nothing, do not turn on the Slate: the keyboard works without it.</p>
   </section>
 
   <section>
