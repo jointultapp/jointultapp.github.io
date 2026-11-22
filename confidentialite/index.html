@@ -65,7 +65,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
       <a href="/" style="color:inherit;text-decoration:none"><span>Tult</span></a>
     </div>
     <h1>Politique de confidentialité</h1>
-    <p class="meta">En vigueur le 22 novembre 2026 · Applications iOS et Android</p>
+    <p class="meta">En vigueur le 23 novembre 2026 · Applications iOS et Android</p>
     <p class="meta"><a href="/privacy/" hreflang="en" lang="en">English version</a></p>
   </header>
 
@@ -125,7 +125,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
           <tr><td>Match à l’affiche d’un tournoi en direct, si vous en choisissez un : son score au fil des volées ou des points (reste, dernière volée, moyenne, manches), ses lancers, et le compte du téléphone marqueur s’il est confié à un marqueur</td><td>Le suivre en direct sur le grand écran et chez les participants ; les lancers ne servent qu’à l’organisateur, pour enregistrer la partie</td></tr>
           <tr><td>Espaces organisateur, si vous en créez (option premium) : nom, couleur, choix de compter ou non vos propres parties, et qui y a accès (pour l’instant, vous seul), jamais le logo</td><td>Retrouver vos espaces sur un autre téléphone, et n’en ouvrir l’accès qu’à leurs membres</td></tr>
           <tr><td>Participants de vos espaces organisateur : nom, couleur et emoji, sans photo, rattachés à l’espace et jamais à un compte</td><td>Afficher leurs noms dans les parties, tournois et soirées de l’espace</td></tr>
-          <tr><td>Option premium, si vous l’avez : sa date de fin</td><td>Débloquer le tournoi en direct, les soirées multi-jeux de plus de 3 épreuves et les espaces organisateur</td></tr>
+          <tr><td>Option premium, si vous l’avez : sa date de fin et, pour un abonnement acheté dans Google Play, ce que Google en dit (jeton d’achat, numéro de commande, état, date de fin, renouvellement ou non, achat de test ou non)</td><td>Débloquer le tournoi en direct, les soirées multi-jeux de plus de 3 épreuves et les espaces organisateur, et vérifier auprès de Google que l’abonnement est payé (voir «&nbsp;Abonnement premium&nbsp;»)</td></tr>
         </tbody>
       </table>
     </div>
@@ -142,12 +142,13 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
       <li><strong>Cloudflare</strong> (Cloudflare Inc.) héberge le site tult.app, dont les pages du tournoi en direct. Comme tout hébergeur, il reçoit l’adresse IP des visiteurs de ces pages.</li>
     </ul>
     <p>Pour la saisie vocale, la phrase dite peut aussi être transformée en texte par la reconnaissance vocale de Google (sur Android) ou d’Apple (sur iPhone), selon leurs conditions et leur politique de confidentialité (voir «&nbsp;Voix : annonces et saisie vocale&nbsp;»).</p>
+    <p>Pour l’abonnement premium, notre serveur interroge aussi Google Play sur vos achats, avec le jeton d’achat que Google a remis à l’application (voir «&nbsp;Abonnement premium&nbsp;»).</p>
     <p>Ces entreprises sont établies aux États-Unis. Les transferts de données hors de l’Union européenne sont encadrés par les clauses contractuelles types de la Commission européenne. Aucune donnée n’est vendue ni utilisée à des fins publicitaires.</p>
   </section>
 
   <section>
     <h2>Base légale</h2>
-    <p>Ces traitements sont nécessaires pour fournir le service que vous utilisez : compter vos parties, les partager avec les joueurs concernés et vous permettre de les retrouver (article 6.1.b du RGPD).</p>
+    <p>Ces traitements sont nécessaires pour fournir le service que vous utilisez : compter vos parties, les partager avec les joueurs concernés, vous permettre de les retrouver et vous fournir l’option premium si vous l’achetez (article 6.1.b du RGPD).</p>
     <p>Les noms des participants qu’un organisateur enregistre dans un espace organisateur sont traités pour l’intérêt légitime de l’organisateur à tenir les scores et les classements de son concours (article 6.1.f du RGPD). Chaque participant peut s’y opposer et demander leur suppression (voir «&nbsp;Espaces organisateur&nbsp;»).</p>
     <p>L’envoi de la phrase dite à Google ou à Apple pour la saisie vocale repose sur votre consentement (article 6.1.a du RGPD), demandé une fois sur chaque appareil et que vous pouvez retirer à tout moment dans les réglages.</p>
   </section>
@@ -193,6 +194,14 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
   </section>
 
   <section>
+    <h2>Abonnement premium</h2>
+    <p>L’option premium est un abonnement d’un an, renouvelé chaque année, que vous pouvez acheter dans l’application sur Android, par Google Play. Le paiement est entièrement traité par Google, selon ses conditions et sa politique de confidentialité : l’application ne voit ni votre nom, ni votre compte Google, ni vos moyens de paiement. Elle donne seulement à Google Play l’identifiant technique de votre compte Tult, pour rattacher l’abonnement à ce compte.</p>
+    <p>Après l’achat, l’application envoie à notre serveur le jeton d’achat que Google Play lui remet. Le serveur demande à Google si l’abonnement est réel et payé, et jusqu’à quand, puis confirme l’achat auprès de Google. Il conserve ce que Google en dit : le jeton d’achat, le numéro de commande, l’état de l’abonnement (actif, résilié, suspendu, expiré), sa date de fin, s’il se renouvelle et s’il s’agit d’un achat de test. Une fois par jour au plus, quand vous ouvrez l’application, il le revérifie auprès de Google, pour suivre un renouvellement, une résiliation ou un remboursement.</p>
+    <p>«&nbsp;Restaurer mes achats&nbsp;», sur la page premium, vérifie à nouveau les abonnements du compte Google Play de ce téléphone et rattache l’abonnement au compte Tult de ce téléphone : un abonnement sert un seul compte Tult à la fois. Si vous reliez votre compte, l’abonnement vous suit.</p>
+    <p>Vous gérez et résiliez l’abonnement dans Google Play, ou depuis la page premium («&nbsp;Gérer mon abonnement&nbsp;») : le premium reste jusqu’au bout de l’année payée. Un remboursement se demande à Google. Ces informations sont conservées tant que votre compte existe, puis effacées avec lui. Supprimer votre compte Tult n’arrête pas l’abonnement chez Google : résiliez-le d’abord dans Google Play.</p>
+  </section>
+
+  <section>
     <h2>Pourboires</h2>
     <p>Depuis les réglages, vous pouvez laisser un pourboire. Le paiement est entièrement traité par Apple (App Store) ou Google (Google Play), selon leurs conditions et leur politique de confidentialité : l’application ne voit ni votre nom, ni votre compte, ni vos moyens de paiement. Elle retient seulement, sur votre téléphone, la date de votre dernier pourboire, pour vous remercier. Un pourboire ne débloque aucune fonction et n’est pas un abonnement.</p>
   </section>
@@ -219,7 +228,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
   <section>
     <h2>Durée de conservation et suppression</h2>
     <p>Sur votre téléphone, les données restent tant que vous ne les supprimez pas. Vous pouvez supprimer une partie ou un tournoi depuis son écran, ou en le faisant glisser vers la gauche dans les listes. Un joueur retiré n’apparaît plus dans les listes mais reste lié à ses anciennes parties. Pour tout effacer du téléphone, utilisez «&nbsp;Effacer toutes les données&nbsp;» dans les réglages, ou désinstallez l’application.</p>
-    <p>En ligne, les données sont conservées tant que votre compte existe. Une partie que vous supprimez l’est aussi pour les autres joueurs ; une partie d’un ami que vous retirez de vos statistiques ne disparaît que pour vous, et les autres joueurs de cette partie voient votre nom en gris. Pour supprimer votre compte, ouvrez les réglages et choisissez «&nbsp;Supprimer mon compte&nbsp;» : votre profil, votre photo de profil, votre code ami, vos chiffres par jeu, vos amis, vos joueurs, vos parties et vos espaces organisateur (avec leurs participants) en ligne sont effacés, et les parties jouées avec des personnes qui ont un compte restent dans leurs statistiques, sans lien avec vous. Désinstaller l’application ne supprime pas ces données en ligne. Vous pouvez aussi demander la suppression depuis <a href="https://jointultapp.github.io/suppression/" target="_blank" rel="noopener">cette page</a> ou en écrivant à <span class="mail">jointultapp@gmail.com</span>.</p>
+    <p>En ligne, les données sont conservées tant que votre compte existe. Une partie que vous supprimez l’est aussi pour les autres joueurs ; une partie d’un ami que vous retirez de vos statistiques ne disparaît que pour vous, et les autres joueurs de cette partie voient votre nom en gris. Pour supprimer votre compte, ouvrez les réglages et choisissez «&nbsp;Supprimer mon compte&nbsp;» : votre profil, votre photo de profil, votre code ami, vos chiffres par jeu, vos amis, vos joueurs, vos parties, vos espaces organisateur (avec leurs participants) et la trace de votre abonnement premium en ligne sont effacés, et les parties jouées avec des personnes qui ont un compte restent dans leurs statistiques, sans lien avec vous. Supprimer votre compte n’arrête pas un abonnement premium : résiliez-le dans Google Play. Désinstaller l’application ne supprime pas ces données en ligne. Vous pouvez aussi demander la suppression depuis <a href="https://jointultapp.github.io/suppression/" target="_blank" rel="noopener">cette page</a> ou en écrivant à <span class="mail">jointultapp@gmail.com</span>.</p>
     <p>Les sauvegardes de votre téléphone (iCloud ou Google) peuvent inclure les données de l’application, selon vos réglages système. Elles relèvent alors de la politique d’Apple ou de Google.</p>
   </section>
 
@@ -238,7 +247,7 @@ footer { color: var(--text-2); font-size: .88rem; border-top: 1px solid var(--bo
     <p>Cette politique est mise à jour quand l’application évolue. La version à jour est toujours publiée sur cette page, avec sa date d’entrée en vigueur.</p>
   </section>
 
-  <footer>Tult · Politique de confidentialité · Dernière mise à jour : 22 novembre 2026</footer>
+  <footer>Tult · Politique de confidentialité · Dernière mise à jour : 23 novembre 2026</footer>
 </div>
 </body>
 </html>
