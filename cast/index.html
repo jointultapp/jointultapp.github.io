@@ -92,7 +92,10 @@ body.netlify-badge #app { padding-bottom: calc(64px + 1.5vh); }
 .cell .t { font-family: var(--display); font-weight: 900; font-size: calc(var(--u) * 2.2vh); color: var(--text-2); }
 .side.current .cell .t { color: var(--ink, #fff); opacity: 0.8; }
 .cell svg { width: calc(var(--u) * 4vh); height: calc(var(--u) * 4vh); fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; }
-.cell.dead { opacity: 0.35; }
+/* A number closed by every side: struck through with a thin line, as on the app and on a paper sheet. */
+.cell.dead { position: relative; }
+.cell.dead::after { content: ''; position: absolute; left: 8%; right: 8%; top: 50%; height: max(2px, 0.25vh); margin-top: max(-1px, -0.125vh); border-radius: 2px; background: var(--text, #16171B); }
+.side.current .cell.dead::after { background: var(--ink, #fff); }
 /* The clock: the way round. */
 .progress { display: flex; align-items: center; gap: 1vw; }
 .progress .pips { display: flex; gap: calc(var(--u) * 0.5vh); }
