@@ -2,3 +2,5 @@
 # (dépôt jointultapp/tult, scripts/web/publish-site.sh). Le reste du site est servi tel quel.
 /live/*  /app/  200
 /t/*     /app/  200
+/game/*        /app/  200
+/score-game/*  /app/  200
