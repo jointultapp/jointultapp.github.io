@@ -1,4 +1,4 @@
-var _sentryDebugIds,_sentryDebugIdIdentifier;void 0===_sentryDebugIds&&(_sentryDebugIds={});try{var stack=(new Error).stack;stack&&(_sentryDebugIds[stack]="81b51170-5cbc-4085-80a6-1abcab3572cb",_sentryDebugIdIdentifier="sentry-dbid-81b51170-5cbc-4085-80a6-1abcab3572cb")}catch(e){}
+var _sentryDebugIds,_sentryDebugIdIdentifier;void 0===_sentryDebugIds&&(_sentryDebugIds={});try{var stack=(new Error).stack;stack&&(_sentryDebugIds[stack]="781b8563-c70e-46ef-aea3-538b011bab4a",_sentryDebugIdIdentifier="sentry-dbid-781b8563-c70e-46ef-aea3-538b011bab4a")}catch(e){}
 var SENTRY_RELEASE;SENTRY_RELEASE={name: "Tult", version: "1.0.0"};
 __d(function(g,r,i,a,_m,e,d){"use strict";Object.defineProperty(e,'__esModule',{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return b}});var t=r(d[0]),s=r(d[1]),n=r(d[2]),c=r(d[3]),l=r(d[4]),o=r(d[5]),T=r(d[6]);function b(){const b=(0,t.c)(27),m=(0,o.useTheme)(),u=(0,l.useT)().nav,h=(0,l.useT)().spaces,y=(0,c.useData)().activeSpaceId===n.PERSO?u.players:h.participants;let f,p,v,x,j,_,N,S,I,L,O,P,k;return b[0]!==u.play?(f=(0,T.jsx)(s.NativeTabs.Trigger.Label,{children:u.play}),b[0]=u.play,b[1]=f):f=b[1],b[2]===Symbol.for("react.memo_cache_sentinel")?(p=(0,T.jsx)(s.NativeTabs.Trigger.Icon,{sf:{default:"play",selected:"play.fill"},md:"play_arrow"}),b[2]=p):p=b[2],b[3]!==f?(v=(0,T.jsxs)(s.NativeTabs.Trigger,{name:"index",children:[f,p]}),b[3]=f,b[4]=v):v=b[4],b[5]!==y?(x=(0,T.jsx)(s.NativeTabs.Trigger.Label,{children:y}),b[5]=y,b[6]=x):x=b[6],b[7]===Symbol.for("react.memo_cache_sentinel")?(j=(0,T.jsx)(s.NativeTabs.Trigger.Icon,{sf:{default:"person.2",selected:"person.2.fill"},md:"group"}),b[7]=j):j=b[7],b[8]!==x?(_=(0,T.jsxs)(s.NativeTabs.Trigger,{name:"players",children:[x,j]}),b[8]=x,b[9]=_):_=b[9],b[10]!==u.tournaments?(N=(0,T.jsx)(s.NativeTabs.Trigger.Label,{children:u.tournaments}),b[10]=u.tournaments,b[11]=N):N=b[11],b[12]===Symbol.for("react.memo_cache_sentinel")?(S=(0,T.jsx)(s.NativeTabs.Trigger.Icon,{sf:{default:"trophy",selected:"trophy.fill"},md:"emoji_events"}),b[12]=S):S=b[12],b[13]!==N?(I=(0,T.jsxs)(s.NativeTabs.Trigger,{name:"tournaments",children:[N,S]}),b[13]=N,b[14]=I):I=b[14],b[15]!==u.history?(L=(0,T.jsx)(s.NativeTabs.Trigger.Label,{children:u.history}),b[15]=u.history,b[16]=L):L=b[16],b[17]===Symbol.for("react.memo_cache_sentinel")?(O=(0,T.jsx)(s.NativeTabs.Trigger.Icon,{sf:"clock.arrow.circlepath",md:"history"}),b[17]=O):O=b[17],b[18]!==L?(P=(0,T.jsxs)(s.NativeTabs.Trigger,{name:"history",children:[L,O]}),b[18]=L,b[19]=P):P=b[19],b[20]!==m.accentText||b[21]!==m.bg||b[22]!==P||b[23]!==v||b[24]!==_||b[25]!==I?(k=(0,T.jsxs)(s.NativeTabs,{tintColor:m.accentText,backgroundColor:m.bg,children:[v,_,I,P]}),b[20]=m.accentText,b[21]=m.bg,b[22]=P,b[23]=v,b[24]=_,b[25]=I,b[26]=k):k=b[26],k}},760,[848,822,849,850,851,852,6]);
 __d(function(g,r,i,a,m,e,d){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),(function(t,n){for(var o in n)Object.defineProperty(t,o,{enumerable:!0,get:Object.getOwnPropertyDescriptor(n,o).get})})(e,{get NativeTabTrigger(){return t.NativeTabTrigger},get NativeTabs(){return n.NativeTabs},get createNativeTabsProps(){return o.createNativeTabsProps}});const t=r(d[0]),n=r(d[1]),o=r(d[2])},822,[698,823,824]);
@@ -25,38 +25,38 @@ __d(function(g,r,i,a,m,e,d){"use strict";var t,n=Object.create,o=Object.definePr
 __d(function(g,r,_i,a,m,e,d){"use strict";var n,t=Object.create,o=Object.defineProperty,u=Object.getOwnPropertyDescriptor,i=Object.getOwnPropertyNames,c=Object.getPrototypeOf,s=Object.prototype.hasOwnProperty,l=(n,t)=>o(n,"name",{value:t,configurable:!0}),f=(n,t,c,l)=>{if(t&&"object"==typeof t||"function"==typeof t)for(let f of i(t))s.call(n,f)||f===c||o(n,f,{get:()=>t[f],enumerable:!(l=u(t,f))||l.enumerable});return n},p=(n,u,i)=>(i=null!=n?t(c(n)):{},f(!u&&n&&n.__esModule?i:o(i,"default",{value:n,enumerable:!0}),n)),O={};((n,t)=>{for(var u in t)o(n,u,{get:t[u],enumerable:!0})})(O,{Presence:()=>b,Root:()=>b}),m.exports=(n=O,f(o({},"__esModule",{value:!0}),n));var N=p(r(d[0])),y=r(d[1]),v=p(r(d[0]));function M(n,t){return v.useReducer((n,o)=>t[n][o]??n,n)}l(M,"useStateMachine");var b=l(n=>{const{present:t,children:o}=n,u=E(t),i="function"==typeof o?o({present:u.isPresent}):N.Children.only(o),c=R(u.ref,P(i));return"function"==typeof o||u.isPresent?N.cloneElement(i,{ref:c}):null},"Presence");function E(n){const[t,o]=N.useState(),u=N.useRef(null),i=N.useRef(n),c=N.useRef("none"),s=N.useRef(void 0),f=n?"mounted":"unmounted",[p,O]=M(f,{mounted:{UNMOUNT:"unmounted",ANIMATION_OUT:"unmountSuspended"},unmountSuspended:{MOUNT:"mounted",ANIMATION_END:"unmounted"},unmounted:{MOUNT:"mounted"}});return N.useEffect(()=>{"mounted"===p?(c.current=s.current??A(u.current),s.current=void 0):c.current="none"},[p]),(0,y.useLayoutEffect)(()=>{const t=u.current,o=i.current;if(o!==n){const u=c.current,l=A(t);if(n)s.current=l,O("MOUNT");else if("none"===l||"none"===t?.display)O("UNMOUNT");else{O(o&&u!==l?"ANIMATION_OUT":"UNMOUNT")}i.current=n}},[n,O]),(0,y.useLayoutEffect)(()=>{if(t){let n;const o=t.ownerDocument.defaultView??window,s=l(c=>{const s=A(u.current).includes(CSS.escape(c.animationName));if(c.target===t&&s&&(O("ANIMATION_END"),!i.current)){const u=t.style.animationFillMode;t.style.animationFillMode="forwards",n=o.setTimeout(()=>{"forwards"===t.style.animationFillMode&&(t.style.animationFillMode=u)})}},"handleAnimationEnd"),f=l(n=>{n.target===t&&(c.current=A(u.current))},"handleAnimationStart");return t.addEventListener("animationstart",f),t.addEventListener("animationcancel",s),t.addEventListener("animationend",s),()=>{o.clearTimeout(n),t.removeEventListener("animationstart",f),t.removeEventListener("animationcancel",s),t.removeEventListener("animationend",s)}}O("ANIMATION_END")},[t,O]),{isPresent:["mounted","unmountSuspended"].includes(p),ref:N.useCallback(n=>{if(n){const t=getComputedStyle(n);u.current=t,s.current=A(t)}else u.current=null;o(n)},[])}}function T(n,t){if("function"==typeof n)return n(t);null!=n&&(n.current=t)}function R(...n){const t=N.useRef(n);return t.current=n,N.useCallback(n=>{const o=t.current;let u=!1;const i=o.map(t=>{const o=T(t,n);return u||"function"!=typeof o||(u=!0),o});if(u)return()=>{for(let n=0;n<i.length;n++){const t=i[n];"function"==typeof t?t():T(o[n],null)}}},[])}function A(n){return n?.animationName||"none"}function P(n){let t=Object.getOwnPropertyDescriptor(n.props,"ref")?.get,o=t&&"isReactWarning"in t&&t.isReactWarning;return o?n.ref:(t=Object.getOwnPropertyDescriptor(n,"ref")?.get,o=t&&"isReactWarning"in t&&t.isReactWarning,o?n.props.ref:n.props.ref||n.ref)}l(E,"usePresence"),l(T,"setRef"),l(R,"useStableComposedRefs"),l(A,"getAnimationName"),l(P,"getElementRef")},843,[12,834]);
 __d(function (global, require, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, dependencyMap) {
   module.exports = Object.assign({
-    "navigationMenuTrigger": "EFtDwW_navigationMenuTrigger",
-    "emptyTabBadge": "EFtDwW_emptyTabBadge",
     "nativeTabsContainer": "EFtDwW_nativeTabsContainer",
-    "tabText": "EFtDwW_tabText",
+    "emptyTabBadge": "EFtDwW_emptyTabBadge",
     "tabBadge": "EFtDwW_tabBadge",
+    "navigationMenuTrigger": "EFtDwW_navigationMenuTrigger",
     "tabContent": "EFtDwW_tabContent",
+    "tabText": "EFtDwW_tabText",
     "navigationMenuRoot": "EFtDwW_navigationMenuRoot"
   }, {
     unstable_styles: {
-      "navigationMenuTrigger": {
+      "nativeTabsContainer": {
         "$$css": true,
-        "_": "EFtDwW_navigationMenuTrigger"
+        "_": "EFtDwW_nativeTabsContainer"
       },
       "emptyTabBadge": {
         "$$css": true,
         "_": "EFtDwW_emptyTabBadge"
       },
-      "nativeTabsContainer": {
-        "$$css": true,
-        "_": "EFtDwW_nativeTabsContainer"
-      },
-      "tabText": {
-        "$$css": true,
-        "_": "EFtDwW_tabText"
-      },
       "tabBadge": {
         "$$css": true,
         "_": "EFtDwW_tabBadge"
       },
+      "navigationMenuTrigger": {
+        "$$css": true,
+        "_": "EFtDwW_navigationMenuTrigger"
+      },
       "tabContent": {
         "$$css": true,
         "_": "EFtDwW_tabContent"
+      },
+      "tabText": {
+        "$$css": true,
+        "_": "EFtDwW_tabText"
       },
       "navigationMenuRoot": {
         "$$css": true,
