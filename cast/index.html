@@ -319,7 +319,7 @@ function sideHtml(s, n, b) {
   // The ring of the side at the oche takes its ink: in its own colour, it would melt into the card.
   var ring = ringHtml(s.finish, current ? ink : s.color);
   var dot = '<div class="dot' + (photo ? ' face' : '') + '" style="background:' + esc(s.color) + '">' + face + ring + '</div>';
-  var tag = s.out ? '<span class="tag out">' + esc((b.labels && b.labels.eliminated) || 'Éliminé') + '</span>'
+  var tag = s.out ? '<span class="tag out">' + esc((b.labels && b.labels.eliminated) || 'Hors jeu') + '</span>'
     : current ? '<span class="tag">À toi</span>'
     : s.place ? '<span class="place">' + s.place + (s.place === 1 ? 're' : 'e') + '</span>' : '';
   var row = gameRowHtml(s, b);
@@ -572,7 +572,7 @@ if (!demo && window.cast && cast.framework) {
   if (game === 'killer') {
     sample.title = 'Killer';
     sample.subtitle = 'Simple · 3 vies';
-    sample.labels = { recent: 'Dernières volées', eliminated: 'Éliminé', killer: 'Killer' };
+    sample.labels = { recent: 'Dernières volées', eliminated: 'Hors jeu', killer: 'Killer' };
     sample.visit = { thrower: 'David', darts: ['D9'], total: null, checkout: null };
   }
   if (game === 'clock') {
@@ -582,7 +582,7 @@ if (!demo && window.cast && cast.framework) {
   if (/final/.test(location.search)) {
     sample.final = { winner: 'Alice', ranking: ['1. Alice', '2. David', '3. Bob'], ratings: [
       { name: 'Alice', rating: '8,5', line: 'A conclu avec un finish de 81, bravo !' },
-      { name: 'David', rating: '7', line: 'Montée en puissance au fil du match.' },
+      { name: 'David', rating: '7', line: 'Montée en puissance au fil de la partie.' },
       { name: 'Bob', rating: '5', line: 'La prochaine sera la bonne.' },
     ] };
     sample.subtitle = '';
